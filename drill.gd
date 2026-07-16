@@ -7,6 +7,8 @@ extends CharacterBody2D
 
 const DIG_SPEED := 160.0
 
+signal digged(pos: Vector2)
+
 var digging := true
 var aim := Vector2(0, 1)        # default aim: down toward core
 var drag_start := Vector2.ZERO
@@ -15,18 +17,8 @@ var dragging := false
 @onready var arrow: Sprite2D = $AimArrow
 
 func _ready() -> void:
-	# Flat cel-blocky drill body (replaces empty sprite from control prototype).
-	var body := $Body
-	body.texture = _make_drill_texture()
-
-func _make_drill_texture() -> ImageTexture:
-	# 36x36 flat yellow block with a dark 3px outline -> cel-blocky look.
-	var s := 36
-	var img := Image.create(s, s, false, Image.FORMAT_RGBA8)
-	img.fill(Palette.OUTLINE)
-	img.fill_rect(Rect2i(3, 3, s - 6, s - 6), Palette.DRILL)
-	var tex := ImageTexture.create_from_image(img)
-	return tex
+	# Kenney drill sprite (free CC0 block-pack).
+	$Body.texture = load("res://assets/tiles/drill.png")
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventScreenTouch:
@@ -52,3 +44,5 @@ func _physics_process(_delta: float) -> void:
 		velocity = Vector2.ZERO
 	arrow.visible = digging
 	move_and_slide()
+	if digging:
+		digged.emit(global_position)

@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bcoreboundworld1"]
+
+[ext_resource type="Script" path="res://world.gd" id="1_world"]
+[ext_resource type="PackedScene" path="res://drill.tscn" id="2_drill"]
+[ext_resource type="Texture2D" path="res://assets/tiles/surface.png" id="3_surf"]
+[ext_resource type="Texture2D" path="res://assets/tiles/crust.png" id="4_crust"]
+[ext_resource type="Texture2D" path="res://assets/tiles/mantle.png" id="5_mantle"]
+[ext_resource type="Texture2D" path="res://assets/tiles/core.png" id="6_core"]
+[ext_resource type="Texture2D" path="res://assets/tiles/chest.png" id="7_chest"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_world")
+
+[node name="Blocks" type="Node2D" parent="."]
+
+[node name="Drill" parent="." instance=ExtResource("2_drill")]
+position = Vector2(270, 80)
+
+[node name="Camera" type="Camera2D" parent="Drill"]
