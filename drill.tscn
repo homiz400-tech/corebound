@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://bcorebounddrill1"]
+
+[ext_resource type="Script" path="res://drill.gd" id="1_drill"]
+
+[node name="Drill" type="CharacterBody2D"]
+position = Vector2(270, 200)
+script = ExtResource("1_drill")
+
+[node name="Body" type="Sprite2D" parent="."]
+
+[node name="AimArrow" type="Sprite2D" parent="."]
+position = Vector2(0, -40)
