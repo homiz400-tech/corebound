@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://bcoreboundart01"]
+
+[ext_resource type="Script" path="res://art_demo.gd" id="1_art"]
+[ext_resource type="PackedScene" path="res://block.tscn" id="2_block"]
+[ext_resource type="PackedScene" path="res://drill.tscn" id="3_drill"]
+
+[node name="ArtDemo" type="Node2D"]
+script = ExtResource("1_art")
+
+[node name="Bands" type="Node2D" parent="."]
+
+[node name="BlockSurface" parent="Bands" instance=ExtResource("2_block")]
+position = Vector2(96, 120)
+band = 0
+
+[node name="BlockCrust" parent="Bands" instance=ExtResource("2_block")]
+position = Vector2(144, 120)
+band = 1
+
+[node name="BlockMantle" parent="Bands" instance=ExtResource("2_block")]
+position = Vector2(192, 120)
+band = 2
+
+[node name="BlockCore" parent="Bands" instance=ExtResource("2_block")]
+position = Vector2(240, 120)
+band = 3
+
+[node name="Drill" parent="." instance=ExtResource("3_drill")]
+position = Vector2(270, 360)
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Plates" type="HBoxContainer" parent="HUD"]
+position = Vector2(16, 16)
+gap = 6
+
+[node name="Title" type="Label" parent="HUD"]
+position = Vector2(16, 64)
+text = "Corebound - flat / cel-blocky art pass"

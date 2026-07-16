@@ -4,10 +4,11 @@ config_version=5
 
 [application]
 
-config/name="Corebound Control Prototype"
+config/name="Corebound"
 config/features/preset="2D"
-run/main_scene="res://main.tscn"
+run/main_scene="res://art_demo.tscn"
 run/main_mesh_library=""
+gui/theme/custom="res://theme.tres"
 
 [display]
 
@@ -20,3 +21,7 @@ window/handheld/orientation="portrait"
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
+
+[autoload]
+
+Palette="*res://palette.gd"
